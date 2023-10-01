@@ -19,7 +19,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SchoolListActivity extends AppCompatActivity {
-        public static final String BASE_URL = "http://172.16.5.32:8081";
+        public static final String BASE_URL = "http://192.168.0.217:8081";
     //http://10.0.2.2:8080 для эмулятора
 
     @Override

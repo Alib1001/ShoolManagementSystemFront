@@ -6,6 +6,10 @@ import retrofit2.http.GET;
 
 public interface APIService {
 
-    @GET("/api/schoolList")
+    @GET("/api/schools/schoolList")
     Call<List<SchoolData>> getSchools();
+
+    @GET("/api/students/studentsList")
+    Call<List<SchoolData>> getStudents();
+
 }
