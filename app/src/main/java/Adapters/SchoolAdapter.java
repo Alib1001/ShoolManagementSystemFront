@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import API.SchoolData;
+import API.SchoolRepository;
 
 public class SchoolAdapter extends BaseAdapter {
     private List<SchoolData> mDataList;
@@ -57,7 +58,7 @@ public class SchoolAdapter extends BaseAdapter {
 
         SchoolData data = mDataList.get(position);
 
-        Picasso.get().load(SchoolListActivity.BASE_URL +"/api/images/" + data.getImguri()).into(imageView);
+        Picasso.get().load(SchoolRepository.BASE_URL +"/api/images/" + data.getImguri()).into(imageView);
         titleTextView.setText(data.getName());
         addressTextView.setText(data.getAddress());
         ratingTextView.setText("Рейтинг: " + data.getRating());

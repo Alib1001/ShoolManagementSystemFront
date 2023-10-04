@@ -11,6 +11,7 @@ import java.util.List;
 
 import API.APIService;
 import API.SchoolData;
+import API.SchoolRepository;
 import Adapters.SchoolAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,7 +20,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SchoolListActivity extends AppCompatActivity {
-        public static final String BASE_URL = "http://192.168.0.217:8081";
+
     //http://10.0.2.2:8080 для эмулятора
 
     @Override
@@ -27,15 +28,9 @@ public class SchoolListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_list);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        SchoolRepository schoolRepository = SchoolRepository.getInstance();
 
-        APIService apiService = retrofit.create(APIService.class);
-
-        Call<List<SchoolData>> call = apiService.getSchools();
-        call.enqueue(new Callback<List<SchoolData>>() {
+        schoolRepository.getSchools(new Callback<List<SchoolData>>() {
             @Override
             public void onResponse(Call<List<SchoolData>> call, Response<List<SchoolData>> response) {
                 if (response.isSuccessful()) {

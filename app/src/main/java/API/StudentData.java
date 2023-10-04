@@ -5,6 +5,12 @@ import com.google.gson.annotations.SerializedName;
 public class StudentData {
     @SerializedName("id")
     private int id;
+
+    @SerializedName("username")
+    private String username;
+
+    @SerializedName("password")
+    private String password;
     @SerializedName("firstName")
     private String name;
 
@@ -30,6 +36,22 @@ public class StudentData {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
@@ -80,6 +102,6 @@ public class StudentData {
 
     @Override
     public String toString() {
-        return "StudentData: [id=" + id + ", name=" + name + ", age=" + age + ", grade=" + grade + "]";
+        return "StudentData: [id=" + id + ", name=" + name + ", age=" + age + ", grade=" + grade + "]" ;
     }
 }
