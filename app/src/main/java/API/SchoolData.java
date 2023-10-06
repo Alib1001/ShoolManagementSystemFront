@@ -31,8 +31,6 @@ public class SchoolData {
     @SerializedName("imguri")
     private String imguri;
 
-
-
     public SchoolData() {
     }
 

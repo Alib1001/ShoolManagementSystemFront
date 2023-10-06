@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 import API.SchoolRepository;
 import API.StudentData;
+import API.UserData;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,6 +39,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 login();
+                Intent intent = new Intent(LoginActivity.this, SchoolListActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -47,25 +50,24 @@ public class LoginActivity extends AppCompatActivity {
 
         loadingProgressBar.setVisibility(View.VISIBLE);
 
-        StudentData studentData = new StudentData();
-        studentData.setUsername(username);
-        studentData.setPassword(password);
+        UserData userData = new UserData();
+        userData.setUsername(username);
+        userData.setPassword(password);
 
-        SchoolRepository.getInstance().login(studentData, new Callback<StudentData>() {
+        SchoolRepository.getInstance().login(userData, new Callback<UserData>() {
             @Override
-            public void onResponse(Call<StudentData> call, Response<StudentData> response) {
+            public void onResponse(Call<UserData> call, Response<UserData> response) {
                 loadingProgressBar.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "Вход выполнен успешно", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), SchoolListActivity.class);
-                    startActivity(intent);
+
                 } else {
                     Toast.makeText(LoginActivity.this, "Ошибка аутентификации", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<StudentData> call, Throwable t) {
+            public void onFailure(Call<UserData> call, Throwable t) {
                 loadingProgressBar.setVisibility(View.GONE);
                 Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("BAKABAKA", "Ошибка: " + t.getMessage());

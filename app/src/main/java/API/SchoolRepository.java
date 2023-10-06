@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SchoolRepository {
 
-    public static final String BASE_URL = "http://192.168.0.217:8081";
+    public static final String BASE_URL = "http://172.16.8.167:8081";
     private static SchoolRepository instance;
     private final APIService apiService;
 
@@ -46,8 +46,8 @@ public class SchoolRepository {
         call.enqueue(callback);
     }
 
-    public void login(StudentData studentData, Callback<StudentData> callback) {
-        Call<StudentData> call = apiService.login(studentData);
+    public void login(UserData userData, Callback<UserData> callback) {
+        Call<UserData> call = apiService.login(userData);
         call.enqueue(callback);
     }
 

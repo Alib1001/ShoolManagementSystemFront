@@ -12,7 +12,7 @@ public interface APIService {
     Call<List<SchoolData>> getSchools();
     @GET("/api/students/studentsList")
     Call<List<StudentData>> getStudents();
-    @POST("/api/students/login")
-    Call<StudentData> login(@Body StudentData studentData);
+    @POST("/api/users/login")
+    Call<UserData> login(@Body UserData userData);
 
 }

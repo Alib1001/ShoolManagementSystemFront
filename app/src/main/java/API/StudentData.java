@@ -2,8 +2,8 @@ package API;
 
 import com.google.gson.annotations.SerializedName;
 
-public class StudentData {
-    @SerializedName("id")
+public class StudentData extends UserData {
+    @SerializedName("user_id")
     private int id;
 
     @SerializedName("username")
@@ -26,6 +26,9 @@ public class StudentData {
 
     @SerializedName("school_id")
     private int schoolId;
+
+    @SerializedName("role")
+    private String role;
 
     public StudentData() {
     }
@@ -60,6 +63,14 @@ public class StudentData {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
     public String getLastname() {
         return lastname;
