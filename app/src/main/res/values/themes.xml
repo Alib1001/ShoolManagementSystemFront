@@ -1,9 +1,26 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.ShoolManagementSystemFront" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Base.Theme.ShoolManagementSystemFront" parent="Theme.AppCompat.DayNight">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:titleTextStyle">@style/ActionBarTitle</item>
     </style>
 
-    <style name="Theme.ShoolManagementSystemFront" parent="Base.Theme.ShoolManagementSystemFront" />
+    <!-- Custom ActionBar title style -->
+    <style name="ActionBarTitle">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/activity_horizontal_margin</item>
+        <!-- Add other title text properties as needed -->
+    </style>
+
+    <style name="Base.Theme.ShoolManagementSystemFront.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Base.Theme.ShoolManagementSystemFront.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Base.Theme.ShoolManagementSystemFront.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Customize your light theme here. -->
+    <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 </resources>

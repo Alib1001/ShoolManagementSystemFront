@@ -1,15 +1,19 @@
 package Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sis2225.shoolmanagementsystemfront.R;
 import com.sis2225.shoolmanagementsystemfront.SchoolListActivity;
+import com.sis2225.shoolmanagementsystemfront.ui.SchoolActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -43,6 +47,28 @@ public class SchoolAdapter extends BaseAdapter {
         return position;
     }
 
+    private void startSchoolActivity(SchoolData data) {
+        int schoolId = data.getId();
+        String imgUri = SchoolRepository.BASE_URL +"/api/images/" + data.getImguri();
+        String schoolName = data.getName();
+        String schoolAddr = data.getAddress();
+        int rating = data.getRating();
+        String schoolReview = data.getAddress();
+        String description = data.getDescription();
+
+        Intent intent = new Intent(mContext, SchoolActivity.class);
+        intent.putExtra("school_id", schoolId);
+        intent.putExtra("imgUri",imgUri);
+        intent.putExtra("school_name",schoolName);
+        intent.putExtra("school_addr",schoolAddr);
+        intent.putExtra("rating",rating);
+        intent.putExtra("school_review",schoolReview);
+        intent.putExtra("school_description",description);
+        mContext.startActivity(intent);
+
+        Log.v("BAKAKA",String.valueOf(data.getId()));
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
@@ -63,6 +89,13 @@ public class SchoolAdapter extends BaseAdapter {
         addressTextView.setText(data.getAddress());
         ratingTextView.setText("Рейтинг: " + data.getRating());
         reviewTextView.setText("Последний отзыв: " + data.getImguri());
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSchoolActivity(data);
+            }
+        });
 
         return view;
     }
