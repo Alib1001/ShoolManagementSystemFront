@@ -2,11 +2,18 @@ package API;
 
 import com.google.gson.annotations.SerializedName;
 
-public class SchoolData {
+import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+public class SchoolData implements Serializable {
     @SerializedName("id")
     private int id;
     @SerializedName("rating")
     private int rating;
+
+    @SerializedName("review")
+    private ArrayList<String> review;
 
     @SerializedName("name")
     private String name;
@@ -82,6 +89,14 @@ public class SchoolData {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public ArrayList<String> getReview() {
+        return review;
+    }
+
+    public void setReview(ArrayList<String> review) {
+        this.review = review;
     }
 
     @Override

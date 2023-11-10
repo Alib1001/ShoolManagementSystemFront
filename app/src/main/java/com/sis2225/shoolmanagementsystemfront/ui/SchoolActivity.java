@@ -1,13 +1,11 @@
 package com.sis2225.shoolmanagementsystemfront.ui;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
 
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,10 +13,10 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sis2225.shoolmanagementsystemfront.R;
 import com.sis2225.shoolmanagementsystemfront.databinding.ActivitySchoolBinding;
-import com.sis2225.shoolmanagementsystemfront.ui.Activityes.ReviewsActivity;
+import com.sis2225.shoolmanagementsystemfront.ui.Activities.UserListActivity;
 import com.squareup.picasso.Picasso;
 
-import API.SchoolRepository;
+import API.SchoolData;
 
 public class SchoolActivity extends AppCompatActivity {
 
@@ -40,17 +38,10 @@ public class SchoolActivity extends AppCompatActivity {
         backBtn = findViewById(R.id.backBtn);
         reviewBtn = findViewById(R.id.reviewBtn);
 
-        Intent getDataIntent = getIntent();
-        int schoolID = getDataIntent.getIntExtra("school_id",0);
-        String imgUri = getDataIntent.getStringExtra("imgUri");
-        String schoolName = getDataIntent.getStringExtra("school_name");
-        String schoolAddr = getDataIntent.getStringExtra("school_addr");
-        int rating = getDataIntent.getIntExtra("rating",0);
-        String schoolReview = getDataIntent.getStringExtra("school_review");
-        String schoolDescription = getDataIntent.getStringExtra("school_description");
-
-        Picasso.get().load(imgUri).into(imageView);
-        textView.setText(schoolDescription);
+        SchoolData schoolData = (SchoolData) getIntent().getSerializableExtra("schoolData");
+        String shoolImgUri = getIntent().getStringExtra("shoolImgUri");
+        Picasso.get().load(shoolImgUri).into(imageView);
+        textView.setText(schoolData.getDescription());
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +53,8 @@ public class SchoolActivity extends AppCompatActivity {
         reviewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ReviewsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), UserListActivity.class);
+                intent.putExtra("schoolData", schoolData);
                 startActivity(intent);
             }
         });

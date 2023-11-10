@@ -21,6 +21,9 @@ public class UserData {
     @SerializedName("role")
     private String role;
 
+    @SerializedName("description")
+    private String description;
+
     @SerializedName("school_id")
     private int schoolId;
 
@@ -74,6 +77,17 @@ public class UserData {
         this.schoolId = schoolId;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
     @Override
     public String toString() {
         return "StudentData: [userid=" + id + ", username=" + username + "]" ;

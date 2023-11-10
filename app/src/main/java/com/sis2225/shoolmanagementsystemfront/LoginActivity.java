@@ -31,7 +31,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Инициализация элементов интерфейса
         usernameEditText = findViewById(R.id.usernameET);
         passwordEditText = findViewById(R.id.passwordET);
         loginButton = findViewById(R.id.loginBtn);
@@ -41,8 +40,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 login();
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
 
             }
         });
@@ -62,7 +59,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<UserData> call, Response<UserData> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "Вход выполнен успешно", Toast.LENGTH_SHORT).show();
-
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(LoginActivity.this, "Ошибка аутентификации", Toast.LENGTH_SHORT).show();
                 }

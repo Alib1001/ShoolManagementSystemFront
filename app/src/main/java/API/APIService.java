@@ -10,8 +10,11 @@ public interface APIService {
 
     @GET("/api/schools/schoolList")
     Call<List<SchoolData>> getSchools();
-    @GET("/api/students/studentsList")
+    @GET("/api/users/userList")
     Call<List<StudentData>> getStudents();
+
+    @GET("/api/users/userList")
+    Call<List<UserData>> getUsers();
     @POST("/api/users/login")
     Call<UserData> login(@Body UserData userData);
 

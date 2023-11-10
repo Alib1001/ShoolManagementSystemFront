@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ui.Activityes.ReviewsActivity"
+            android:name=".ui.Activities.UserListActivity"
             android:exported="false" />
         <activity
             android:name=".ui.SchoolActivity"
