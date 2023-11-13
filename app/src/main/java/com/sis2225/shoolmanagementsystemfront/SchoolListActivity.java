@@ -37,7 +37,7 @@ public class SchoolListActivity extends AppCompatActivity {
                     List<SchoolData> schools = response.body();
                     if (!schools.isEmpty()) {
                         ListView listView = findViewById(R.id.listView);
-                        SchoolAdapter adapter = new SchoolAdapter(SchoolListActivity.this, schools); // dataList - список данных для вашего списка
+                        SchoolAdapter adapter = new SchoolAdapter(SchoolListActivity.this, schools);
                         listView.setAdapter(adapter);
                     } else {
                         Toast.makeText(getApplicationContext(), "Список пуст", Toast.LENGTH_LONG).show();

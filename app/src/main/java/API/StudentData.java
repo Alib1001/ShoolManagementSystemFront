@@ -6,6 +6,7 @@
         @SerializedName("student_id")
         private int id;
 
+
         @SerializedName("student_username")
         private String username;
 
@@ -75,6 +76,8 @@
         public String getLastname() {
             return lastname;
         }
+
+
 
         public void setLastname(String lastname) {
             this.lastname = lastname;

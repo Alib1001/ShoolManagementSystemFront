@@ -1,5 +1,6 @@
 package com.sis2225.shoolmanagementsystemfront.ui.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
@@ -26,6 +27,7 @@ public class UserListActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.listView);
 
+
         SchoolRepository schoolRepository = SchoolRepository.getInstance();
 
         schoolRepository.getUsers(new Callback<List<UserData>>() {
@@ -35,7 +37,9 @@ public class UserListActivity extends AppCompatActivity {
                     List<UserData> users = response.body();
                     if (!users.isEmpty()) {
                         ListView listView = findViewById(R.id.listView);
-                        UserListAdapter userAdapter = new UserListAdapter(getApplicationContext(),users);
+                        UserListAdapter userAdapter = new UserListAdapter(getApplicationContext(),
+                                users,getIntent().getIntExtra("schoolId",5));
+                        Toast.makeText(getApplicationContext(),String.valueOf(users.get(2).getId()),Toast.LENGTH_LONG).show();
                         listView.setAdapter(userAdapter);
                     } else {
                         Toast.makeText(getApplicationContext(), "Список пуст", Toast.LENGTH_LONG).show();
@@ -50,7 +54,5 @@ public class UserListActivity extends AppCompatActivity {
                 Log.e("BAKABAKA", "Ошибка: " + t.getMessage());
             }
         });
-
-
     }
 }

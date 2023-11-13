@@ -58,7 +58,7 @@ public class SchoolAdapter extends BaseAdapter {
 
         Intent intent = new Intent(mContext, SchoolActivity.class);
         intent.putExtra("schoolData", data);
-        intent.putExtra("shoolImgUri",imgUri);
+        intent.putExtra("schoolImgUri",imgUri);
         mContext.startActivity(intent);
 
         Log.v("BAKAKA",String.valueOf(data.getId()));

@@ -9,7 +9,6 @@
         android:id="@+id/userNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="John Doe"
         android:textSize="16sp"
         android:textStyle="bold" />
 

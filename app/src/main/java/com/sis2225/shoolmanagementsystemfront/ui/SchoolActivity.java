@@ -55,6 +55,7 @@ public class SchoolActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), UserListActivity.class);
                 intent.putExtra("schoolData", schoolData);
+                intent.putExtra("schoolId",schoolData.getId());
                 startActivity(intent);
             }
         });
